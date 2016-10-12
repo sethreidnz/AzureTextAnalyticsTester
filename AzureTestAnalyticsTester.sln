@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{F0D98C07-73E8-4BA3-AEB3-095BB4E3494E}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{0CF6EB67-0135-498B-9872-A2D10B409CA4}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "AzureTestAnalyticsTester", "src\AzureTestAnalyticsTester\AzureTestAnalyticsTester.xproj", "{DDC8389F-7752-4480-8AEA-2C3C1490B86D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DDC8389F-7752-4480-8AEA-2C3C1490B86D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DDC8389F-7752-4480-8AEA-2C3C1490B86D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DDC8389F-7752-4480-8AEA-2C3C1490B86D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DDC8389F-7752-4480-8AEA-2C3C1490B86D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{DDC8389F-7752-4480-8AEA-2C3C1490B86D} = {F0D98C07-73E8-4BA3-AEB3-095BB4E3494E}
+	EndGlobalSection
+EndGlobal
