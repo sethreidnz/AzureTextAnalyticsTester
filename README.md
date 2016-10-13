@@ -5,8 +5,8 @@ has support for the sentiment analytics.
 
 ## Prerequisites
 
-> .NET Core - Follow the instructions for your platform [here](https://www.microsoft.com/net/core#windows)
-> Azure Text Analytics Account Key - Folow the instructions [here](https://www.microsoft.com/cognitive-services/en-us/text-analytics-api) to set one up in Azure
+- .NET Core - Follow the instructions for your platform [here](https://www.microsoft.com/net/core#windows)
+- Azure Text Analytics Account Key - Folow the instructions [here](https://www.microsoft.com/cognitive-services/en-us/text-analytics-api) to set one up in Azure
 
 ## Getting started
 
