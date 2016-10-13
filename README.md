@@ -1,4 +1,4 @@
-# Azure Text Analysis Tester
+# Azure Text Analytics Tester
 
 This is a basic dotnet core console application used to test out hte Azure Text Analysis api. Current it only
 has support for the sentiment analytics.
@@ -18,9 +18,15 @@ cd AzureTextAnalyticsTester
 dotnet restore
 ```
 
+Add your Text Analytics api key as a user secret:
+
+```sh
+dotnet user-secrets set TextAnalytics:AzureSubscriptionKey <api-key-here>
+```
+
 Run the application:
 
-```
+```sh
 dotnet run
 ```
 
