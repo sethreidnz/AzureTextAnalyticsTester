@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using AzureTestAnalyticsTester.Models;
 using Microsoft.Extensions.Configuration;
 using Newtonsoft.Json;
 
@@ -12,36 +13,50 @@ namespace AzureTestAnalyticsTester
     {
         private static TextAnalyticsClient _textAnalyticsClient;
 
-        public static async void Main(string[] args)
+        public static void Main(string[] args)
         {
-           var config = BuildConfiguration();
+            // call async version of main method
+            Main().Wait();
+        }
+
+        public static async Task Main()
+        {
+            var config = BuildConfiguration();
 
             var textAnalyticsKey = config["TextAnalytics:AzureSubscriptionKey"];
             _textAnalyticsClient = new TextAnalyticsClient(textAnalyticsKey);
 
             Console.WriteLine($"How are you feeling today?");
-            var response = Console.ReadLine();
+            var textToAnalyse = Console.ReadLine();
 
-            Console.WriteLine($"You Responed with:");
-            Console.WriteLine(response);
-            var centimentScore = GetCentimentScore(response);
+            var sentimentScore = await GetSentimentScore(textToAnalyse);
+
+            Console.WriteLine($"The sentiment score of the text entered: '{textToAnalyse}' is:");
+            Console.WriteLine(sentimentScore);
 
             WaitKey();
         }
 
-        private static async Task<decimal?> GetCentimentScore(string text)
+        private static async Task<decimal?> GetSentimentScore(string text)
         {
-            decimal? centimentScore = null;
+            TextDocumentModel textDocument = null;
             try
             {
-                centimentScore = await _textAnalyticsClient.GetSentiment(text);
+                textDocument = await _textAnalyticsClient.GetSentimentScore(text);
             }
             catch (Exception exception)
             {
                 Console.WriteLine($"There was an error calling the Azure Text Analytics api:");
                 Console.WriteLine(JsonConvert.SerializeObject(exception));
             }
-            return centimentScore;
+
+            decimal? score = null;
+            if (textDocument != null)
+            {
+                score = textDocument.Score;
+            }
+
+            return score;
         }
 
         private static IConfigurationRoot BuildConfiguration()
@@ -60,7 +75,7 @@ namespace AzureTestAnalyticsTester
 
         private static void WaitKey()
         {
-            Console.WriteLine("Press ESC to stop");
+            Console.WriteLine("Press ESC to quit");
             do
             {
                 while (!Console.KeyAvailable)
@@ -68,11 +83,6 @@ namespace AzureTestAnalyticsTester
                     // Do something
                 }
             } while (Console.ReadKey(true).Key != ConsoleKey.Escape);
-        }
-
-        private static string GetConfigValue(string key)
-        {
-            return "";
         }
     }
 }
